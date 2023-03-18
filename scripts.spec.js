@@ -43,3 +43,24 @@ describe('divide', () => {
 		expect(scripts.divide(2,0)).toBe("ERROR");
 	});
 });
+
+describe('operate', () => {
+	test('divide two numbers', () => {
+		expect(scripts.operate('/',4,2)).toBe(2);
+	});
+
+	test('divide by 0', () => {
+		expect(scripts.operate('/',2,0)).toBe("ERROR");
+	});
+	test('sum 2 numbers', () => {
+		expect(scripts.operate('+',2,1)).toBe(3);
+	});
+	test('multiply 2 numbers', () => {
+		expect(scripts.operate('*',7,2)).toBe(14);
+	});
+
+	test('fail operate command', () => {
+		expect(scripts.operate('//',2,0)).toBe("ERROR");
+	});
+
+});
