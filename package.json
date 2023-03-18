@@ -4,7 +4,8 @@
   "description": "These are a series of javascript exercises intended to be used alongside the curriculum at 'The Odin Project'  They start off nice and easy, but get more involved as you progress through them.",
   "main": "scritps.js",
   "repository": {
-    "type": "git"    
+    "type": "git",
+    "url": "git+https://github.com/gustavobastian/Calculator.git"
   },
   "author": "",
   "license": "ISC",
