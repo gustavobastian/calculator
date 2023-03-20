@@ -139,10 +139,8 @@ function onButtonClear(element){
     statusLocal='0';
     return 1;
 };
-
-/*
-export default{
-    onButtonClick,
-    onButtonClear
-}
-*/
+function onButtonBackspace(element){    
+    const inputHolder=document.getElementById("inputStorage");
+    inputHolder.textContent=inputHolder.textContent.slice(0,-1);    
+    return 1;
+};
