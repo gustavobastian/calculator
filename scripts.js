@@ -63,6 +63,7 @@ function onButtonClick(element){
     {
         number1=parseInt(inputHolder.textContent);  
         number2=(resultHolder.textContent);  
+        
 
         let operationLocal=number2[(number2.length)-1];
         console.log("operationlocal:"+operationLocal);
@@ -86,9 +87,18 @@ function onButtonClick(element){
     }
     else {
         if(data==='='){  
-            number2=(resultHolder.textContent);                        
+            number2=(resultHolder.textContent);    
+            console.log("number2:",number2)
+            if(number2==0){
+                return 1;
+            }                    
             let operationLocal=number2[(number2.length)-1]; 
-            number2=parseInt((resultHolder.textContent).slice(0,-1));
+            if(resultHolder.textContent.length>2){
+                number2=parseInt((resultHolder.textContent).slice(0,-1));
+            }
+            else{
+                number2=parseInt((resultHolder.textContent));
+            }
             number1=parseInt(inputHolder.textContent);
                
             let resultLocal=parseInt(operate(operationLocal, number2, number1));              
