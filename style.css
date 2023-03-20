@@ -33,6 +33,21 @@ body{
     width: 50%;
     padding-bottom: 2px;
 }
+#resultStorage{
+    display:flex;
+    flex-direction: column;    
+    background-color: rgb(226, 226, 226);
+    font-size: 28px !important;
+    width: 100%;
+    font-weight: normal!important;
+}
+#inputStorage{
+    display:flex;
+    flex-direction: column;    
+    background-color: rgb(226, 226, 226);
+    width: 100%;
+    padding-bottom: 2px;
+}
 .Data{
     display:flex;
     justify-content: right;

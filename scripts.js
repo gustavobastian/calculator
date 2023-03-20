@@ -3,15 +3,11 @@ var number2=0;
 var result=0;
 var operation='';
 var statusLocal='0';
-
-function hello(){
-    return "hello from Script.js";
-};
+let output='';
 
 function add() {
     return arguments[0] + arguments[1];
 };
-
 function subtract(number1, number2) {
     return number1 - number2;
 };
@@ -22,9 +18,10 @@ function divide() {
     if(arguments[1]==0){
         return "ERROR"
     }
-    return  parseInt(arguments[0]/arguments[1]);
+    console.log("num:"+arguments[1])
+    console.log("den:"+arguments[0])
+    return  parseInt(arguments[1]/arguments[0]);
 };
-
 function operate( operator,number1,number2) {
     let output=0;    
     switch(operator){
@@ -50,39 +47,65 @@ function operate( operator,number1,number2) {
 
 function onButtonClick(element){
         
-    const maxNumber=100;
+    const maxNumber=10000;
     console.log("id:"+element.textContent);
     let data=element.textContent;
-    if(statusLocal=='1' && data!='C'){return;}
 
+    const resultHolder=document.getElementById("resultStorage");
+    const inputHolder=document.getElementById("inputStorage");
+    output=  inputHolder.textContent;       
+    
     if((data==='*')||(data==='/')||(data==='+')||(data==='-'))
     {
-        const resultHolder=document.getElementById("resultStorage");
-        number2=parseInt(resultHolder.textContent);
-        resultHolder.textContent='0';
-        operation=data;
+        number1=parseInt(inputHolder.textContent);  
+        number2=(resultHolder.textContent);  
+
+        let operationLocal=number2[(number2.length)-1];
+        console.log("operationlocal:"+operationLocal);
+        if((operationLocal==='*')||(operationLocal==='/')||(operationLocal==='+')||(operationLocal==='-')){
+            number2=parseInt((resultHolder.textContent).slice(0,-1));
+            number1=parseInt(inputHolder.textContent);    
+            let resultLocal=parseInt(operate(operationLocal, number2, number1));              
+            resultHolder.textContent=resultLocal+data;
+            inputHolder.textContent="0";
+        }
+        else{            
+            if(output!=0){
+                resultHolder.textContent=output+data;
+                inputHolder.textContent='0';
+                }else {
+                    resultHolder.textContent=data;
+                    inputHolder.textContent='0';
+                }  
+        }    
         return 1;
     }
     else {
-        if(data==='='){
-            const resultHolder=document.getElementById("resultStorage");
-            number1=parseInt(resultHolder.textContent);                                 
-            result=operate(operation,number1,number2);
-            resultHolder.textContent=result;
-            statusLocal='1';
+        if(data==='='){  
+            number2=(resultHolder.textContent);                        
+            let operationLocal=number2[(number2.length)-1]; 
+            number2=parseInt((resultHolder.textContent).slice(0,-1));
+            number1=parseInt(inputHolder.textContent);
+               
+            let resultLocal=parseInt(operate(operationLocal, number2, number1));              
+            resultHolder.textContent=resultLocal;
+            inputHolder.textContent=resultLocal;
             return 1;
         }
         else{
             const resultHolder=document.getElementById("resultStorage");
-            if(resultHolder.textContent=='0'){
-                resultHolder.textContent='';
+            
+             
+
+            if(inputHolder.textContent=='0'){
+                inputHolder.textContent='';
             }
-            number1=parseInt(resultHolder.textContent)*10;
+            number1=parseInt(inputHolder.textContent)*10;
             
             if(number1+parseInt(element.textContent) >maxNumber ){
                 return 0;
             }
-            resultHolder.textContent= resultHolder.textContent+element.textContent;
+            inputHolder.textContent= inputHolder.textContent+element.textContent;
         }
     }
     return 1;
@@ -93,6 +116,8 @@ function onButtonClear(element){
     const maxNumber=100;
     const resultHolder=document.getElementById("resultStorage");
     resultHolder.textContent="0";
+    const inputHolder=document.getElementById("inputStorage");
+    inputHolder.textContent="0";
     console.log("Clear");
     number1=0;
     number2=0;
