@@ -20,6 +20,10 @@ function divide() {
     }
     console.log("num:"+arguments[1])
     console.log("den:"+arguments[0])
+    if(arguments[0]==0){
+        window.alert("You are trying to divide by 0!");
+        return arguments[1];
+    }
     return  parseInt(arguments[1]/arguments[0]);
 };
 function operate( operator,number1,number2) {
@@ -47,7 +51,7 @@ function operate( operator,number1,number2) {
 
 function onButtonClick(element){
         
-    const maxNumber=10000;
+    const maxNumber=1000000;
     console.log("id:"+element.textContent);
     let data=element.textContent;
 
