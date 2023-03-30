@@ -2,20 +2,19 @@ body{
     display:flex;
     flex-direction: column;
     justify-content: center;
-    background: blueviolet;
+    height: 100vh;
+    background: linear-gradient(blue,gray)
 }
 
 .header{
-    display: flex;
+    display: flex;    
     justify-content: center;
     flex-direction: row;
-    text-align: center;
-    
+    text-align: center;    
     font-weight: bold;
     font-size: 48px;
     padding-bottom:20px;
-    color:gray;
-
+    color:rgb(219, 58, 58);
 }
 .container{
     display: flex;
@@ -32,6 +31,7 @@ body{
     background-color: rgb(226, 226, 226);
     width: 50%;
     padding-bottom: 2px;
+    box-shadow: 0px 0px 15px 0px black;
 }
 #resultStorage{
     display:flex;
@@ -40,6 +40,7 @@ body{
     font-size: 28px !important;
     width: 100%;
     font-weight: normal!important;
+    
 }
 #inputStorage{
     display:flex;
@@ -65,6 +66,9 @@ button{
     width: 33%;
     height: 48px;
     font-size: 48px;
+    border-radius: 7px;
+    margin:2px;
+    box-shadow: 0px 0px 5px 0px black;
 }
 .clear-button{
     width: 50%;
