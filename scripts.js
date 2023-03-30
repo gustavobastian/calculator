@@ -141,6 +141,8 @@ function onButtonClear(element){
 };
 function onButtonBackspace(element){    
     const inputHolder=document.getElementById("inputStorage");
-    inputHolder.textContent=inputHolder.textContent.slice(0,-1);    
+    if((isNaN(inputHolder.textContent)!=true)&&(parseInt(inputHolder.textContent)>10)){
+        inputHolder.textContent=inputHolder.textContent.slice(0,-1);
+        }    
     return 1;
 };
